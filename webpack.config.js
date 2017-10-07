@@ -1,6 +1,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+
 
 module.exports = {
     entry: './src/index.js',
@@ -12,17 +14,18 @@ module.exports = {
         new CleanWebpackPlugin(['dist']),
         new HtmlWebpackPlugin({
             title: 'SquareUp'
-        })
+        }),
+        new ExtractTextPlugin("styles.css"),
     ],
     module: {
         rules: [
-            {
-                test: /\.css$/,
-                use: [
-                    'style-loader',
-                    'css-loader'
-                ]
-            }
+          {
+            test: /\.css$/,
+            use: ExtractTextPlugin.extract({
+              fallback: "style-loader",
+              use: "css-loader"
+            })
+          }
         ]
-    }
+      }  
 };
