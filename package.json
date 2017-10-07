@@ -1,0 +1,27 @@
+{
+  "name": "sqaure-up-web",
+  "version": "0.0.1",
+  "description": "SquareUp web front end",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "test",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mrman/square-up-web.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mrman/square-up-web/issues"
+  },
+  "homepage": "https://github.com/Mrman/square-up-web#readme",
+  "devDependencies": {
+    "webpack": "^3.6.0"
+  },
+  "dependencies": {
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
+  }
+}
