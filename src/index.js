@@ -1,10 +1,27 @@
 import React from 'react';
 import { render } from 'react-dom';
-
+import { AppContainer } from 'react-hot-loader'
 
 import bulma from 'bulma/css/bulma.css';
 
-const Hello = () => (<h1>Hello!</h1>);
+import Root from './components/Root';
 
-render(<Hello/>, document.body);
+render(
+    <AppContainer>
+        <Root/>
+    </AppContainer>,
+    document.body
+);
+
+if (module.hot) {
+    module.hot.accept('./components/Root', () => {
+      const NewRoot = require('./components/Root').default;
+      render(
+        <AppContainer>
+          <NewRoot/>
+        </AppContainer>,
+        document.body
+      );
+    });
+  }
 
