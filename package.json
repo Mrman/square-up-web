@@ -6,7 +6,8 @@
   "scripts": {
     "test": "test",
     "build": "webpack",
-    "dev": "webpack-dev-server --open"
+    "dev": "webpack-dev-server --open",
+    "postinstall": "webpack"
   },
   "repository": {
     "type": "git",
@@ -34,6 +35,7 @@
   },
   "dependencies": {
     "bulma": "^0.5.3",
+    "express": "^4.16.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0"
   }
