@@ -23,7 +23,27 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(['dist']),
         new HtmlWebpackPlugin({
-            title: 'SquareUp'
+            inject: false,
+            template: require('html-webpack-template'),
+            appMountId: 'app',
+            meta: [
+                {
+                    name: 'viewport',
+                    content: 'width=device-width, initial-scale=1'
+                }
+            ],
+            minify: {
+                removeComments: true,
+                collapseWhitespace: true,
+                removeRedundantAttributes: true,
+                useShortDoctype: true,
+                removeEmptyAttributes: true,
+                removeStyleLinkTypeAttributes: true,
+                keepClosingSlash: true,
+                minifyJS: true,
+                minifyCSS: true,
+                minifyURLs: true
+            }
         }),
         new webpack.HotModuleReplacementPlugin(),
         new ExtractTextPlugin('assets/styles.css'),
@@ -52,7 +72,7 @@ module.exports = {
                     options: {
                         presets: ['react', 'stage-2'],
                         plugins: ['react-hot-loader/babel']
-                        
+
                     }
                 }
             }
