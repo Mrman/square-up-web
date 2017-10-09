@@ -10,7 +10,7 @@ render(
     <AppContainer>
         <Root/>
     </AppContainer>,
-    document.body
+    document.getElementById('app')    
 );
 
 if (module.hot) {
