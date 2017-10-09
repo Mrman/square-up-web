@@ -13,7 +13,7 @@ module.exports = {
         ]
     },
     output: {
-        filename: 'bundle.js',
+        filename: 'assets/bundle.js',
         path: path.resolve(__dirname, 'dist')
     },
     devServer: {
@@ -26,7 +26,7 @@ module.exports = {
             title: 'SquareUp'
         }),
         new webpack.HotModuleReplacementPlugin(),
-        new ExtractTextPlugin('styles.css'),
+        new ExtractTextPlugin('assets/styles.css'),
     ],
     module: {
         rules: [
