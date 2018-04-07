@@ -1,24 +1,25 @@
 import React, { Component } from 'react';
-import TestComponent from './TestComponent';
+import FacebookLogin from 'react-facebook-login';
+import { connect } from 'react-redux'
 
-export default class Root extends Component {
+class Root extends Component {
   render() {
     return (
       <section className="section">
         <div className="container">
           <h1 className="title">
-            Hello World
-        </h1>
-          <p className="subtitle">
-            My first website with <strong>Bulma</strong>!
-        </p>
-          <div>
-            <TestComponent />
-            <h3>Hello!!</h3>
-            <a className="button is-primary">Button</a>
-          </div>
+            Square Up
+          </h1>
         </div>
+        <FacebookLogin
+            appId="1560055450772174"
+            autoLoad={true}
+            fields="name,email,picture"
+            callback={(response)=>console.log(response)} />
       </section>
     );
   }
 }
+
+export default Root
+

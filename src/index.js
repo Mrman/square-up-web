@@ -1,15 +1,21 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader'
+import { Provider } from 'react-redux'
+import configureStore from './store'
 
 import bulma from 'bulma/css/bulma.css';
 
 import Root from './components/Root';
 
+const store = configureStore()
+
 render(
-    <AppContainer>
+    <Provider store={store}>
+      <AppContainer>
         <Root/>
-    </AppContainer>,
+      </AppContainer>
+    </Provider>,
     document.getElementById('app')    
 );
 
