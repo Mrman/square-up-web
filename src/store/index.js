@@ -3,10 +3,8 @@ import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
 const reducer = (state, action) => {
     switch(action.type) {
         case "VALIDATE_TOKEN":
-            console.log(`validate token: ${action.payload}`)
             return Object.assign(state, {"token": action.payload})
         default:
-            console.log(`not doing nuffin to: ${state}`)
             return state
     }
 }
