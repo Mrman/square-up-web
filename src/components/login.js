@@ -16,14 +16,14 @@ class Login extends Component {
             Please sign in below:
           </p>
           <br/>
-        </div>
-        <FacebookLogin
+          <FacebookLogin
           appId="1560055450772174"
           autoLoad={true}
           fields="name,email,picture"
           callback={this.props.actions.requestTokenAction} 
           isDisabled={this.props.isLoggedIn}
         />
+        </div>
       </section>
     );
   }
