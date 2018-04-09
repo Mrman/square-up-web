@@ -21,9 +21,11 @@ if (module.hot) {
     module.hot.accept('./components/login', () => {
       const NewLogin = require('./components/login').default;
       render(
-        <AppContainer>
-          <NewLogin/>
-        </AppContainer>,
+        <Provider store={store}>
+          <AppContainer>
+            <NewLogin/>
+          </AppContainer>
+        </Provider>,
         document.body
       );
     });

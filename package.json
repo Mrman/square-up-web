@@ -1,12 +1,12 @@
 {
-  "name": "sqaure-up-web",
+  "name": "square-up-web",
   "version": "0.0.1",
   "description": "SquareUp web front end",
   "main": "src/index.js",
   "scripts": {
     "test": "test",
     "build": "webpack",
-    "dev": "webpack-dev-server --open --https --cert ./local.cert --key ./local.key",
+    "dev": "webpack-dev-server --open --https",
     "postinstall": "./node_modules/.bin/webpack",
     "start": "node server.js"
   },
@@ -41,6 +41,7 @@
     "express": "^4.16.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
+    "react-facebook-login-component": "^0.9.2",
     "react-redux": "^5.0.7",
     "redux": "^3.7.2"
   }

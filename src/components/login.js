@@ -12,16 +12,26 @@ class Login extends Component {
           <h1 className="title">
             Welcome to Square Up
           </h1>
-          <p>Please sign in below:</p>
+          <p>
+            Please sign in below:
+          </p>
           <br/>
         </div>
         <FacebookLogin
-            appId="1560055450772174"
-            autoLoad={true}
-            fields="name,email,picture"
-            callback={this.props.actions.requestTokenAction} />
+          appId="1560055450772174"
+          autoLoad={true}
+          fields="name,email,picture"
+          callback={this.props.actions.requestTokenAction} 
+          isDisabled={this.props.isLoggedIn}
+        />
       </section>
     );
+  }
+}
+
+const mapStateToProps = (state) => {
+  return {
+    isLoggedIn: state.isLoggedIn
   }
 }
 
@@ -33,5 +43,5 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(Login)
+export default connect(mapStateToProps, mapDispatchToProps)(Login)
 
