@@ -5,6 +5,7 @@ import { requestTokenAction } from '../actions/requestToken'
 import { bindActionCreators } from 'redux';
 
 class Login extends Component {
+  
   render() {
     return (
       <section className="section">
@@ -12,17 +13,18 @@ class Login extends Component {
           <h1 className="title">
             Welcome to Square Up
           </h1>
-          <p>
-            Please sign in below:
-          </p>
-          <br/>
-          <FacebookLogin
-          appId="1560055450772174"
-          autoLoad={true}
-          fields="name,email,picture"
-          callback={this.props.actions.requestTokenAction} 
-          isDisabled={this.props.isLoggedIn}
-        />
+          { this.props.model.isLoading ?
+            <div>
+              Please sign in below:
+              <p/>
+              <FacebookLogin
+                appId="1560055450772174"
+                autoLoad={true}
+                fields="name,email,picture"
+                callback={(data) => this.props.actions.requestTokenAction(data)} 
+                isDisabled={this.props.model.isLoggedIn}/>
+            </div> : 
+              <div>Loading...</div> }
         </div>
       </section>
     );
@@ -31,7 +33,10 @@ class Login extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    isLoggedIn: state.isLoggedIn
+    model: {
+      isLoggedIn: state.isLoggedIn,
+      isLoading: state.isLoading
+    }
   }
 }
 
