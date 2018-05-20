@@ -14,11 +14,14 @@ module.exports = {
     },
     output: {
         filename: 'assets/bundle.js',
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'dist'),
+        publicPath: '/'
     },
     devServer: {
         contentBase: './dist',
-        hot: true
+        historyApiFallback: true,
+        hot: true,
+        port: 8000
     },
     plugins: [
         new CleanWebpackPlugin(['dist']),

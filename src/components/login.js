@@ -5,17 +5,17 @@ import { requestTokenAction } from '../actions/requestToken'
 import { bindActionCreators } from 'redux';
 
 class Login extends Component {
-  
+
   render() {
     return (
       <section className="section">
         <div className="container">
           <h1 className="title">
-            Welcome to Square Up
+            Login to Square Up
           </h1>
           { this.props.model.isLoading ?
             <div>
-              Please sign in below:
+              Sign in using Facebook:
               <p/>
               <FacebookLogin
                 appId="1560055450772174"
@@ -34,8 +34,8 @@ class Login extends Component {
 const mapStateToProps = (state) => {
   return {
     model: {
-      isLoggedIn: state.isLoggedIn,
-      isLoading: state.isLoading
+      isLoggedIn: state.login.isLoggedIn,
+      isLoading: state.login.isLoading
     }
   }
 }

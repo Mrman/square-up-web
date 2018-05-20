@@ -1,3 +1,5 @@
+import { push } from 'react-router-redux'
+
 const setAccessToken = function setAccessToken(token) {
     return { type: "SET_ACCESS_TOKEN", token }
 }
@@ -21,23 +23,28 @@ export const requestTokenAction = function requestTokenAction(payload) {
         } else {
             dispatch(isLoading(true))
             dispatch(hasErrored(null))
-            // TODO: TRV - doing this here for now, will move it to server call
-            fetch(
-                "https://graph.facebook.com/v2.12/oauth/access_token" +
-                "?grant_type=fb_exchange_token" +
-                "&client_id=1560055450772174" +
-                "&client_secret=???" +
-                "&fb_exchange_token=" + payload.accessToken)
+            // TODO: Change me to system defined host
+            fetch("http://localhost:8080/fb/login",
+                {
+                    method: "POST",
+                    headers: {
+                        "FB-Access-Token": `Bearer ${payload.accessToken}`
+                    }
+                }
+            )
             .then((response) => {
                 if (!response.ok) {
-                    throw Error(`Token retrieval failed with: Response code: ${response.status}. Response text: '${response.statusText}'`)
+                    dispatch(isLoggedIn(false))
+                    throw Error(`Token retrieval failed: Response code - ${response.status}. Response text - '${response.statusText}'`)
                 }
                 return response;
             })
             .then((response) => { return response.json() })
             .then((data) => {
                 dispatch(isLoggedIn(true)) 
-                dispatch(setLongAccessToken(data))
+                // TODO TRV: Set this when we have the true token ID
+                dispatch(setLongAccessToken(data.id))
+                dispatch(push("/"))
             })
             .catch((error) => { 
                 dispatch(hasErrored(error.message)) 
